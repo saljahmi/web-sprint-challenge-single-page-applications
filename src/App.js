@@ -28,11 +28,11 @@ const initialFormErrors = {
   // sauce: '',
 }
 
-const initialUsers = []
+const initialPizzas = []
 const initialDisabled = true
 
 export default function App() {
-  const [pizzas, setPizzas] = useState(initialUsers)       
+  const [pizzas, setPizzas] = useState(initialPizzas)       
   const [formValues, setFormValues] = useState(initialFormValues) 
   const [formErrors, setFormErrors] = useState(initialFormErrors)
   const [disabled, setDisabled] = useState(initialDisabled)       
@@ -51,7 +51,7 @@ export default function App() {
   const postNewPizza = newPizza => {
     axios.post('https://reqres.in/', newPizza)
       .then(res => {
-        setPizzs([...pizzas, res.data])
+        setPizzas([...pizzas, res.data])
         // console.log( res.data)
       })
       .catch(err => {
@@ -104,7 +104,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    getUsers()
+    getPizzas()
   }, [])
 
   useEffect(() => {
