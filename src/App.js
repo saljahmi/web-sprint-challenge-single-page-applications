@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
-import axios from 'axios'
-import * as yup from 'yup'
+import React, { useState, useEffect } from 'react';
+import { Link, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
+import * as yup from 'yup';
 
-import Pizza from './Pizza'
-import Form from './Form'
-import formSchema from './formSchema'
+import Pizza from './Pizza';
+import Home from './Home';
+import Form from './Form';
+import formSchema from './formSchema';
 
 
 const initialFormValues = {
@@ -38,7 +39,7 @@ export default function App() {
   const [disabled, setDisabled] = useState(initialDisabled)       
 
   const getPizzas = () => {
-    axios.get('https://reqres.in/')
+    axios.get('https://reqres.in/api/users')
       .then(res => {
         console.log(res)
         // setPizzas(res.data.data)
@@ -49,7 +50,7 @@ export default function App() {
   }
 
   const postNewPizza = newPizza => {
-    axios.post('https://reqres.in/', newPizza)
+    axios.post('https://reqres.in/api/users', newPizza)
       .then(res => {
         setPizzas([...pizzas, res.data])
         // console.log( res.data)
