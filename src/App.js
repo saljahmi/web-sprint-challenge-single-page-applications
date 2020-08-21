@@ -3,11 +3,10 @@ import { Link, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import * as yup from 'yup';
 
-import Pizza from './Pizza';
 import Home from './Home';
 import Form from './Form';
 import formSchema from './formSchema';
-
+import Pizza from './Pizza';
 
 const initialFormValues = {
   name: '',
@@ -42,7 +41,7 @@ export default function App() {
     axios.get('https://reqres.in/api/users')
       .then(res => {
         console.log(res)
-        // setPizzas(res.data.data)
+        //setPizzas(res.data.data)
       })
       .catch(err => {
         debugger
@@ -53,7 +52,7 @@ export default function App() {
     axios.post('https://reqres.in/api/users', newPizza)
       .then(res => {
         setPizzas([...pizzas, res.data])
-        // console.log( res.data)
+        console.log( res.data)
       })
       .catch(err => {
         debugger
@@ -89,7 +88,10 @@ export default function App() {
   const checkboxChange = (name, isChecked) => {
     setFormValues({
       ...formValues,
-      [name]: isChecked,
+      toppings: {
+        ...formValues.toppings,
+        [name]: isChecked,
+      }
     })
   }
 
@@ -109,8 +111,10 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    console.log(formValues)
     formSchema.isValid(formValues)
       .then(valid => {
+        console.log(valid)
         setDisabled(!valid);
       })
   }, [formValues])
@@ -146,13 +150,13 @@ export default function App() {
         </Route>
       </Switch>
 
-      {/* {
-        users.map(user => {
+      {
+        pizzas.map(pizza => {
           return (
-            <User key={user.id} details={user} />
+            <Pizza key={pizza.id} details={pizza} />
           )
         })
-      } */}
+      }
     </div>
   )
 }

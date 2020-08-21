@@ -30,19 +30,17 @@ export default function Form(props) {
       <div className='form-group submit'>
         <h2>Add a Pizza</h2>
 
-        <button disabled={disabled}>submit</button>
-
-        <div className='errors'>
-          <div>{errors.name}</div>
-          {/* <div>{errors.size}</div>
-          <div>{errors.sauce}</div> */}
-        </div>
-      </div>
+        {/* <div className='errors'> */}
+          
+          
+          {/* <div>{errors.sauce}</div> */}
+        {/* </div>
+      </div> */}
 
       <div className='form-group inputs'>
         <h4>Build Your Own Pizza</h4>
 
-        <label>Name&nbsp;
+        <label>Name Your Pizza&nbsp;
           <input
             value={values.name}
             onChange={onInputChange}
@@ -50,6 +48,7 @@ export default function Form(props) {
             type='text'
           />
         </label>
+        <div id="name_error">{errors.name}</div>
 
         <label>Size
           <select
@@ -63,6 +62,8 @@ export default function Form(props) {
             <option value='large'>Large</option>
           </select>
         </label>
+        <div id="size_error">{errors.size}</div>
+    </div>
 
         {/* ////////// RADIO BUTTONS ////////// */}
         {/* ////////// RADIO BUTTONS ////////// */}
@@ -114,7 +115,7 @@ export default function Form(props) {
           <input
             type="checkbox"
             name="onions"
-            checked={values.toppings.pineapple}
+            checked={values.toppings.onions}
             onChange={onCheckboxChange}
           />
         </label>
@@ -129,7 +130,7 @@ export default function Form(props) {
         </label>
       </div>
 
-        <label>SpecialInstructions
+        <label>Special Instructions
           <input
             value={values.special}
             onChange={onInputChange}
@@ -137,6 +138,8 @@ export default function Form(props) {
             type='text'
           />
         </label>
+
+      <button id="submit" disabled={disabled}>Add to Order</button>
 
       </div>
     </form>
