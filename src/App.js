@@ -24,7 +24,7 @@ const initialFormValues = {
 
 const initialFormErrors = {
   name: '',
-  // size: '',
+  size: '',
   // sauce: '',
 }
 
@@ -130,7 +130,7 @@ export default function App() {
 
       <div>
         <h1> Your favorite food delivered while coding </h1>
-        <Link to = '/Form'>Pizza?</Link>
+        
       </div>
 
       <Switch>
@@ -143,6 +143,13 @@ export default function App() {
             disabled={disabled}
             errors={formErrors}
           />
+          {
+            pizzas.map(pizza => {
+            return (
+              <Pizza key={pizza.id} details={pizza} />
+            )
+            })
+          }
         </Route>
 
         <Route path='/'>
@@ -150,13 +157,7 @@ export default function App() {
         </Route>
       </Switch>
 
-      {
-        pizzas.map(pizza => {
-          return (
-            <Pizza key={pizza.id} details={pizza} />
-          )
-        })
-      }
+      
     </div>
   )
 }

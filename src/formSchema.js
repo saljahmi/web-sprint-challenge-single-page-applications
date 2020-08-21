@@ -9,18 +9,18 @@ const formSchema = yup.object().shape({
         .string()
         .oneOf(['small', 'medium', 'large',], 'You must select a size')
         .required('Size is Required'),
-    // toppings:  yup.object().shape({
-    //     onions: yup
-    //         .boolean(),
-    //     pepperoni: yup
-    //         .boolean(),
-    //     pineapple: yup
-    //         .boolean(),
-    //     sausage: yup
-    //         .boolean(),
-    // }),
-    // special: yup
-    //     .string(),
+    toppings:  yup.object().shape({
+        onions: yup
+            .boolean(),
+        pepperoni: yup
+            .boolean(),
+        pineapple: yup
+            .boolean(),
+        sausage: yup
+            .boolean(),
+    }),
+    special: yup
+        .string(),
 })
 
 export default formSchema
